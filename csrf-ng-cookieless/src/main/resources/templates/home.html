@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html 
+  xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+  ng-app="csrfngcookieless">
+  <head>
+    <title>Spring Security Example</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <form id="csrfForm" th:action="@{/}" method="post"></form>
+    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Sign Out"/>
+    </form>
+    <div ng-controller="Customer">
+			<p>The ID is {{customer.id}}</p>
+      <p>The name is {{customer.name}}</p>
+      <button ng-click="create()">Create</button>
+    </div>
+    <script src="/js/main.js" type="text/javascript"></script>
+  </body>
+</html>
